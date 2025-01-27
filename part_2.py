@@ -80,9 +80,9 @@ def measure_performance(func, *args, repeats=100):
     return total_time
 
 
-# Define a price range for testing
-min_price = 100
-max_price = 200
+# Determine price range dynamically
+min_price = min(item["Price"] for item in data)
+max_price = max(item["Price"] for item in data)
 
 # Measure performance for OOBTree and dict
 tree_time = measure_performance(oob_tree.range_query_with_items, min_price, max_price)
